@@ -1,0 +1,15 @@
+[
+  {
+    "Course": "Python"
+  },
+  {
+    "Passing Marks": "90"
+  },
+  {
+    "topics": [
+      "txt",
+      "json",
+      "csv"
+    ]
+  }
+]

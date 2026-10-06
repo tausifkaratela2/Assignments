@@ -1,0 +1,17 @@
+[
+   {
+      "name": "Tausif",
+      "marks": 85,
+      "grade": "A"
+   },
+   {
+      "name": "Girish",
+      "marks": 92,
+      "grade": "A+"
+   },
+   {
+      "name": "Abhay",
+      "marks": 78,
+      "grade": "B"
+   }
+]
