@@ -1,54 +1,49 @@
+import csv
+import os
+ 
+FILE = "books.csv"
+ 
+ 
 class Book:
-    def __init__(self, title, book_id, author):
+    def __init__(self, title, author):
         self.title = title
-        self.book_id = book_id
         self.author = author
-        self.is_borrowed = False
-
-
+ 
+ 
 class Library:
     def __init__(self, name):
-         self.name = name
-         self.books = []
-
-    def add(self, title):
-        self.books.append(title)
+        self.name = name
+        self.books = []
+ 
+    def add(self, title, author):
+        self.books.append(Book(title, author))
+        with open(FILE, "a", newline="") as f:
+            csv.writer(f).writerow([title, author])
         print(f"Added {title} to {self.name}")
-    
-    def show_Books(self):
-         print(f"books in {self.name}", self.books)
-
-    def borrow(self, title):
-        if title in self.books:
-            self.books.remove(title)
-            print(f"you borrowed {title} from {self.name}")
-        else:
-            print(f"{title} is not available in {self.name}")
-
-
-lib1 = Library("One")
-lib2 = Library("Two")
-
+ 
+    def show_books(self):
+        if not os.path.exists(FILE):
+            print("No books saved yet.")
+            return
+        with open(FILE, newline="") as f:
+            for row in csv.reader(f):
+                print(f"{row[0]} by {row[1]}")
+ 
+ 
+lib = Library("My Library")
+ 
 while True:
-    print("\n1. Add | 2. Show | 3. Borrow | 4. Exit")
-    a = input("Choose an option: ")
-
-    if a == 4:
+    print("\n1. Add book | 2. View books | 3. Exit")
+    choice = input("Choose an option: ")
+ 
+    if choice == "1":
+        title = input("Book title: ")
+        author = input("Author: ")
+        lib.add(title, author)
+    elif choice == "2":
+        lib.show_books()
+    elif choice == "3":
         break
-
-    t = input("WHich Library? lib1/lib2: ")
-    lib = lib1 if t == "lib1" else lib2
-
-    if a == "1":
-        title = input("Enter the book title: ")
-        lib.add(title)
-
-    elif a == "2":
-        lib.show_Books()
-
-    elif a == "3":
-        try:
-            t == input("Enter book title")
-            lib.borrow(title)
-        except:
-            print("You have already borrowed this book once")
+    else:
+        print("Please choose 1, 2 or 3.")
+ 
