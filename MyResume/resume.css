@@ -1,0 +1,109 @@
+:root {
+  --ink: #1f2428;
+  --muted: #5f6870;
+  --accent: #1f4e8c;
+  --rule: #cfd5da;
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 3rem 1.5rem;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+main { max-width: 46rem; margin: 0 auto; }
+
+/* ---------- header ---------- */
+h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.contact { margin: 0.25rem 0 0; color: var(--muted); }
+
+/* ---------- sections ---------- */
+section { margin-top: 1.75rem; }
+
+h2 {
+  margin: 0 0 0.6rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--rule);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+p { margin: 0; }
+
+/* ---------- rows: title left, date right ---------- */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.date { color: var(--muted); white-space: nowrap; font-size: 0.9rem; }
+.org { color: var(--muted); margin-bottom: 0.3rem; }
+
+article { margin-bottom: 1.1rem; }
+article:last-child { margin-bottom: 0; }
+
+section > .row + .org { margin-bottom: 0.7rem; }
+
+ul { margin: 0.3rem 0 0; padding-left: 1.15rem; }
+li { margin-bottom: 0.25rem; padding-left: 0.1rem; }
+li::marker { color: var(--muted); }
+
+/* ---------- skills ---------- */
+dl {
+  display: grid;
+  grid-template-columns: 10.5rem 1fr;
+  gap: 0.3rem 1rem;
+  margin: 0;
+}
+dt { font-weight: 600; }
+dd { margin: 0; }
+
+/* ---------- small screens ---------- */
+@media (max-width: 560px) {
+  body { padding: 2rem 1.1rem; }
+  h1 { font-size: 2rem; }
+  dl { grid-template-columns: 1fr; gap: 0; }
+  dd { margin-bottom: 0.5rem; }
+  .row { flex-direction: column; gap: 0; }
+}
+
+/* ---------- print: one A4 page ---------- */
+@page { size: A4; margin: 14mm 16mm; }
+
+@media print {
+  body { padding: 0; font-size: 10pt; line-height: 1.4; }
+  main { max-width: none; }
+  h1 { font-size: 24pt; }
+  h3 { font-size: 10.5pt; }
+  section { margin-top: 12pt; }
+  h2 { font-size: 8pt; }
+  article, .row { break-inside: avoid; }
+  .row { flex-direction: row; }
+  dl { grid-template-columns: 10.5rem 1fr; gap: 2pt 1rem; }
+  dd { margin-bottom: 0; }
+}
