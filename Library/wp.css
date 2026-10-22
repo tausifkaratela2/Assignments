@@ -114,6 +114,35 @@ li {
 
 #empty { margin: 0; color: var(--muted); }
 
+/* ---------- landing page ---------- */
+.choices { margin-top: 3.5rem; display: grid; gap: 1rem; }
+
+.choice {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1.25rem;
+  align-items: baseline;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--rule);
+  color: inherit;
+  text-decoration: none;
+}
+.choice:hover .label { color: var(--accent); }
+.choice:focus-visible { outline: 3px solid #e0a82e; outline-offset: 4px; }
+
+.choice .num { font-family: var(--serif); font-size: 1.2rem; color: var(--muted); grid-row: span 2; }
+.choice .label { font-family: var(--serif); font-size: 1.6rem; }
+.choice .hint { color: var(--muted); }
+
+.back {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+#book-form, #catalogue-heading { scroll-margin-top: 2rem; }
+
 /* ---------- small screens ---------- */
 @media (max-width: 480px) {
   body { padding-top: 2.5rem; }
